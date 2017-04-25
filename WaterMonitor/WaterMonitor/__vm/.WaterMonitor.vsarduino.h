@@ -13,7 +13,7 @@
 #define __AVR_ATmega328p__
 #define __AVR_ATmega328P__
 #define F_CPU 16000000L
-#define ARDUINO 10802
+#define ARDUINO 106013
 #define ARDUINO_AVR_UNO
 #define ARDUINO_ARCH_AVR
 #define __cplusplus 201103L
@@ -23,12 +23,7 @@
 #define __extension__
 #define __inline__
 #define __volatile__
-#define GCC_VERSION 40902
-
-#define __cplusplus 201103L
-#undef __cplusplus
-#define __cplusplus 201103L
-
+#define GCC_VERSION 40801
 #define volatile(va_arg) 
 #define _CONST
 #define __builtin_va_start
@@ -37,25 +32,15 @@
 #define NOINLINE __attribute__((noinline))
 #define prog_void
 #define PGM_VOID_P int
-
-
 #ifndef __builtin_constant_p
 	#define __builtin_constant_p __attribute__((__const__))
 #endif
 #ifndef __builtin_strlen
 	#define __builtin_strlen  __attribute__((__const__))
 #endif
-
 #define NEW_H
 typedef void *__builtin_va_list;
-//extern "C" void __cxa_pure_virtual() {;}
-
-typedef int div_t;
-typedef int ldiv_t;
-
-
-typedef void *__builtin_va_list;
-//extern "C" void __cxa_pure_virtual() {;}
+extern "C" void __cxa_pure_virtual() {;}
 
 
 
@@ -64,6 +49,6 @@ typedef void *__builtin_va_list;
 #undef F
 #define F(string_literal) ((const PROGMEM char *)(string_literal))
 #undef PSTR
-#define PSTR(string_literal) ((const PROGMEM char *)(string_literal))
+#define PSTR(string_literal) ((const PROGMEM char *)(string_literal))")
 #include "WaterMonitor.ino"
 #endif

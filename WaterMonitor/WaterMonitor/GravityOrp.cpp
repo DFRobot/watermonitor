@@ -93,15 +93,21 @@ void GravityOrp::update()
 	static unsigned long orpTimer = millis();   //analog sampling interval
 	static unsigned long printTime = millis();
 	static int orpArrayIndex = 0;
+	double sum = 0;
 	if (millis() >= orpTimer)
 	{
 		orpTimer = millis() + 20;
-		currentOrp = analogRead(orpPin);    //read an analog value every 20ms
-		averageOrp = (previousOrp + currentOrp) / 2;
-		previousOrp = averageOrp;
+		orpArray[orpArrayIndex++] = analogRead(orpPin);    //read an analog value every 20ms
 
-		//convert the analog value to orp according the circuit
-		this->orpValue = ((30 * this->voltage * 1000) - (75 * averageOrp*this->voltage * 1000 / 1024)) / 75 - this->offset;
+		if (orpArrayIndex == arrayLength)   //5*20 = 100ms计算一次
+		{
+			orpArrayIndex = 0;
+			for(int i = 0; i < arrayLength; i++)
+				sum += orpArray[i];
+			averageOrp = sum / arrayLength;
+			//convert the analog value to orp according the circuit
+			this->orpValue = ((30 * this->voltage * 1000) - (75 * averageOrp*this->voltage * 1000 / 1024)) / 75 - this->offset;
+		}	
 	}
 
 }

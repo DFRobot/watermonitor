@@ -19,7 +19,7 @@
 #include <stdlib.h>
 #include "GravityRtc.h"
 #include "OneWire.h"
-#include <MemoryFree.h>
+
 
 //温度传感器引脚定义和初始化
 OneWire temperature(5);  

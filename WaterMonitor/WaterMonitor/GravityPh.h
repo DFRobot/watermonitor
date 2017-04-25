@@ -29,11 +29,9 @@ public:
 	//抽取样本间隔
 	int samplingInterval;   
 private:
-	static const int arrayLength = 20;
+	static const int arrayLength = 5;
 	int pHArray[arrayLength];   //储存传感器返回数据的平均值 
 	double pHValue, voltage;
-	double previousVoltage;
-	double currentVoltage;
 	double averageVoltage;
 
 	//
