@@ -24,12 +24,6 @@
     <ClInclude Include="WaterSensor.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Iot.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GravityIot.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GravityOrp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -48,9 +42,6 @@
     <ClInclude Include="GravityRtc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GravityLcd.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GravitySd.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -59,12 +50,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Iot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GravityIot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GravityOrp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -78,9 +63,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GravityTemperature.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GravityLcd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GravityRtc.cpp">

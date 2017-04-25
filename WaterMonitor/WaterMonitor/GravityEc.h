@@ -48,7 +48,7 @@ private:
 	IWaterSensor* ecTemperature = NULL;
 
 	
-	static const int numReadings = 40;
+	static const int numReadings = 20;
 	unsigned int readings[numReadings] = { 0 };      // the readings from the analog input
 	int index;
 	unsigned long AnalogValueTotal;      // the running total

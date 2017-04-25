@@ -15,11 +15,11 @@
 **********************************************************************/
 
 #include <Arduino.h>
-#include <SoftwareSerial.h>
 #include "GravitySensorHub.h"
 #include <stdlib.h>
 #include "GravityRtc.h"
 #include "OneWire.h"
+#include <MemoryFree.h>
 
 //温度传感器引脚定义和初始化
 OneWire temperature(5);  
@@ -54,15 +54,17 @@ void setup() {
 void loop() {
 	rtc.update();
 	monitor.update();
+	Serial.print("freeMemory()=");
+	Serial.println(freeMemory());
 
-	Serial.print("ph= ");
-	Serial.print(monitor.getValueBySensorNumber(0));
-	Serial.print("  Temp= ");
-	Serial.print(monitor.getValueBySensorNumber(1));
-	Serial.print("  EC= ");
-	Serial.print(monitor.getValueBySensorNumber(3));
-	Serial.print("  Orp= ");
-	Serial.println(monitor.getValueBySensorNumber(4));
+	//Serial.print("ph= ");
+	//Serial.print(monitor.getValueBySensorNumber(0));
+	//Serial.print("  Temp= ");
+	//Serial.print(monitor.getValueBySensorNumber(1));
+	//Serial.print("  EC= ");
+	//Serial.print(monitor.getValueBySensorNumber(3));
+	//Serial.print("  Orp= ");
+	//Serial.println(monitor.getValueBySensorNumber(4));
 	
 
 }

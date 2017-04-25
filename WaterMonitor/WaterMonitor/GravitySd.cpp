@@ -14,6 +14,22 @@
 * date    :  2017-04-19
 **********************************************************************/
 
+
+//#if defined(__SAMD21G18A__)
+
+
+
+#if  defined(__AVR_ATmega2560__)
+
+#define PINSS 53
+const int CsPin = 53;
+
+#else
+
+const int CsPin = 4;
+
+#endif
+
 #include "GravitySd.h"
 #include "string.h"
 #include <SPI.h>
@@ -23,7 +39,7 @@
 extern GravityRtc rtc;
 String dataString = "";
 
-GravitySd::GravitySd(IWaterSensor* gravitySensor[]) :chipSelect(53),sdDataUpdateTime(0)
+GravitySd::GravitySd(IWaterSensor* gravitySensor[]) :chipSelect(CsPin),sdDataUpdateTime(0)
 {
 	this->gravitySensor = gravitySensor;
 }
@@ -42,11 +58,14 @@ void GravitySd::setup()
 
 	Serial.print("Initializing SD card...");
 
+	pinMode(SS, OUTPUT);
+
 	if (!SD.begin(chipSelect)) {
 		Serial.println("Card failed, or not present");
 		// don't do anything more:
 		return;
 	}
+
 	Serial.println("card initialized.");
 	dataFile = SD.open("sensor.csv", FILE_WRITE);
 	if (dataFile && dataFile.position() == 0) {
@@ -121,7 +140,7 @@ void GravitySd::update()
 		if (dataFile) {
 			dataFile.println(dataString);
 			dataFile.close();
-			//Serial.println(dataString);
+			Serial.println(dataString);
 		}
 
 		sdDataUpdateTime = millis();
