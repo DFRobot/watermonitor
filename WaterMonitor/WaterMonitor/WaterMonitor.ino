@@ -54,8 +54,8 @@ void setup() {
 void loop() {
 	rtc.update();
 	monitor.update();
-	Serial.print("freeMemory()=");
-	Serial.println(freeMemory());
+	/*Serial.print("freeMemory()=");
+	Serial.println(freeMemory());*/
 
 	//Serial.print("ph= ");
 	//Serial.print(monitor.getValueBySensorNumber(0));

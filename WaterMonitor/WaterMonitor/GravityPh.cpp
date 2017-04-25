@@ -43,17 +43,43 @@ void GravityPh::update()
 	static int pHArrayIndex = 0;
 	if (millis() - samplingTime > samplingInterval)
 	{
-		pHArray[pHArrayIndex++] = analogRead(this->sensorPin);
+		//pHArray[pHArrayIndex++] = analogRead(this->sensorPin);
 
-		if (pHArrayIndex == GravityPh::arrayLength)
-			pHArrayIndex = 0;
-		voltage = avergearray(pHArray, GravityPh::arrayLength)*5.0 / 1024.0;
+		currentVoltage = analogRead(this->sensorPin);
+		averageVoltage = (currentVoltage + previousVoltage) / 2;
+		previousVoltage = averageVoltage;
+
+		voltage = averageVoltage*5.0 / 1024.0;
 		/*Serial.print("voltage = ");
 		Serial.println(voltage);*/
 		pHValue = 3.5*voltage + this->offset;
 		samplingTime = millis();
 	}
 }
+
+//void GravityPh::update()
+//{
+//	static unsigned long samplingTime = millis();
+//	static unsigned long printTime = millis();
+//	static int pHArrayIndex = 0;
+//	if (millis() - samplingTime > samplingInterval)
+//	{
+//		//pHArray[pHArrayIndex++] = analogRead(this->sensorPin);
+//
+//		currentVoltage = analogRead(this->sensorPin);
+//		averageVoltage = (currentVoltage + previousVoltage) / 2;
+//		previousVoltage = averageVoltage;
+//
+//		if (pHArrayIndex == GravityPh::arrayLength)
+//			pHArrayIndex = 0;
+//		voltage = avergearray(pHArray, GravityPh::arrayLength)*5.0 / 1024.0;
+//		/*Serial.print("voltage = ");
+//		Serial.println(voltage);*/
+//		pHValue = 3.5*voltage + this->offset;
+//		samplingTime = millis();
+//	}
+//}
+
 
 
 //********************************************************************************************

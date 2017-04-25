@@ -32,6 +32,9 @@ private:
 	static const int arrayLength = 20;
 	int pHArray[arrayLength];   //储存传感器返回数据的平均值 
 	double pHValue, voltage;
+	double previousVoltage;
+	double currentVoltage;
+	double averageVoltage;
 
 	//
 	double avergearray(int* arr, int number);

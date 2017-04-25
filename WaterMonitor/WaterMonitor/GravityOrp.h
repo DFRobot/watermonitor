@@ -33,9 +33,14 @@ private:
 	double orpValue;
 
 
-	static const int arrayLength = 20;
-	int orpArray[arrayLength];
+	/*static const int arrayLength = 20;
+	int orpArray[arrayLength];*/
 	double avergeArray(int* arr, int number);
+
+	double previousOrp;
+	double currentOrp;
+	double averageOrp;
+
 public:
 	GravityOrp();
 	~GravityOrp();
