@@ -7,7 +7,11 @@
 * the Free Software Foundation, either version 3 of the License, or
 * (at your option) any later version.
 *
-* Description:
+* Description:Monitoring water quality parameters Conductivity
+*
+* Product Links：http://www.dfrobot.com.cn/goods-882.html
+* 
+* Sensor driver pin：A1 (Can be modified in the .cpp file:ECsensorPin(A1);)
 *
 * author  :  Jason
 * version :  V1.0
@@ -48,16 +52,17 @@ private:
 	IWaterSensor* ecTemperature = NULL;
 
 	
-	static const int numReadings = 20;
+	static const int numReadings = 5;
 	unsigned int readings[numReadings] = { 0 };      // the readings from the analog input
 	int index;
+	double sum;
 	unsigned long AnalogValueTotal;      // the running total
 	unsigned int AnalogAverage;
 	unsigned int averageVoltage;      
 	unsigned long AnalogSampleTime;
 	unsigned long printTime;
 	unsigned long tempSampleTime;
-	unsigned long AnalogSampleInterval ; 
+	unsigned long AnalogSampleInterval; 
 	unsigned long printInterval ;
 
 	//计算平均值

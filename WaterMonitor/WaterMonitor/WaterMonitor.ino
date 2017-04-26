@@ -1,4 +1,4 @@
-﻿/*********************************************************************
+/*********************************************************************
 * WaterMonitor.ino
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
@@ -8,6 +8,13 @@
 * (at your option) any later version.
 *
 * Description:
+* This sample code is mainly used to monitor water quality
+* including ph, temperature, dissolved oxygen, ec and orp,etc.
+* 
+* Software Environment: Arduino IDE 1.8.2 
+* Software download link: https://www.arduino.cc/en/Main/Software
+*
+* Hardware platform   : Arduino M0, Arduino Mega2560
 *
 * author  :  Jason
 * version :  V1.0
@@ -19,6 +26,7 @@
 #include <stdlib.h>
 #include "GravityRtc.h"
 #include "OneWire.h"
+
 
 
 //温度传感器引脚定义和初始化
@@ -54,24 +62,24 @@ void setup() {
 void loop() {
 	rtc.update();
 	monitor.update();
-	/*Serial.print("freeMemory()=");
-	Serial.println(freeMemory());*/
 
+	//*************************串口调试******************
 	//Serial.print("ph= ");
 	//Serial.print(monitor.getValueBySensorNumber(0));
 	//Serial.print("  Temp= ");
 	//Serial.print(monitor.getValueBySensorNumber(1));
-	//Serial.print("  EC= ");
-	//Serial.print(monitor.getValueBySensorNumber(3));
 	//Serial.print("  Orp= ");
 	//Serial.println(monitor.getValueBySensorNumber(4));
-	
-
+	//Serial.print("  EC= ");
+	//Serial.println(monitor.getValueBySensorNumber(3));
 }
 
 
+
 /******************************相关调试信息的打印***************************/
-//*************************带框架测试程序******************
+//注意:Arduino M0打印调试信息的时候需要将Serial替换成SerialUSB
+
+//*************************串口调试******************
 //Serial.print("ph= ");
 //Serial.print(monitor.getValueBySensorNumber(0));
 //Serial.print("  Temp= ");
@@ -81,16 +89,6 @@ void loop() {
 //Serial.print("  EC= ");
 //Serial.println(monitor.getValueBySensorNumber(3));
 
-
-//***********************不带框架的测试程序******************
-//Serial.print("ph= ");
-//Serial.print(ph.getValue());
-//Serial.print("  orp= ");
-//Serial.print(orp.getValue());
-//Serial.print("  temp= ");
-//Serial.print(temp.getValue());
-//Serial.print("  ec= ");
-//Serial.print(ec.getValue());
 
 //*************************时间********************************
 //Serial.print("   Year = ");//year
@@ -108,11 +106,3 @@ void loop() {
 //Serial.print("   Second = ");//second
 //Serial.println(rtc.second);
 
-
-
-//*************************物联网代码****************************
-//dtostrf(monitor.getValueBySensorNumber(0), 6, 2, buffer);
-//dfiot.sendMessage("ph", buffer, 5000);
-//dtostrf(monitor.getValueBySensorNumber(2), 6, 2, buffer);
-//dfiot.sendMessage("temp", buffer, 5000);
-//dfiot.loop();

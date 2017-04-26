@@ -1,4 +1,4 @@
-﻿/*********************************************************************
+﻿/*********************************************************************************
 * GravityOrp.h
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
@@ -7,12 +7,16 @@
 * the Free Software Foundation, either version 3 of the License, or
 * (at your option) any later version.
 *
-* Description:  
+* Description:Monitoring water quality parameters Oxidation-Reduction Potential
+*
+* Product Links：http://www.dfrobot.com.cn/goods-840.html
+*
+* Sensor driver pin：A3 
 *
 * author  :  Jason
 * version :  V1.0
 * date    :  2017-04-14
-**********************************************************************/
+**********************************************************************************/
 
 #pragma once
 #include <Arduino.h>
@@ -35,7 +39,7 @@ private:
 
 	static const int arrayLength = 5;
 	int orpArray[arrayLength];
-	double avergeArray(int* arr, int number);
+	double sum;
 
 	double previousOrp;
 	double currentOrp;

@@ -7,7 +7,11 @@
 * the Free Software Foundation, either version 3 of the License, or
 * (at your option) any later version.
 *
-* Description:
+* Description:Monitoring water quality parameters ph
+*
+* Product Links：http://www.dfrobot.com.cn/goods-812.html
+*
+* Sensor driver pin：A2 
 *
 * author  :  Jason
 * version :  V1.0
@@ -33,9 +37,8 @@ private:
 	int pHArray[arrayLength];   //储存传感器返回数据的平均值 
 	double pHValue, voltage;
 	double averageVoltage;
+	double sum;
 
-	//
-	double avergearray(int* arr, int number);
 public:
 	GravityPh();
 	~GravityPh() {};

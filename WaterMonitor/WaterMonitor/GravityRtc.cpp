@@ -7,7 +7,11 @@
 * the Free Software Foundation, either version 3 of the License, or
 * (at your option) any later version.
 *
-* Description:
+* Description:Get real-time clock data
+*
+* Product Links：
+*
+* Sensor driver pin：I2C
 *
 * author  :  Jason
 * version :  V1.0

@@ -7,7 +7,11 @@
 * the Free Software Foundation, either version 3 of the License, or
 * (at your option) any later version.
 *
-* Description:
+* Description:Monitoring water quality parameters Conductivity
+*
+* Product Links：http://www.dfrobot.com.cn/goods-882.html
+*
+* Sensor driver pin：A1 (ECsensorPin(A1))
 *
 * author  :  Jason
 * version :  V1.0
@@ -20,7 +24,7 @@
 
 
 GravityEc::GravityEc(IWaterSensor* temp) :ECsensorPin(A1), ECcurrent(0), index(0), AnalogAverage(0),
-AnalogValueTotal(0), averageVoltage(0), AnalogSampleTime(0), printTime(0),
+AnalogValueTotal(0), averageVoltage(0), AnalogSampleTime(0), printTime(0),sum(0),
 tempSampleTime(0), AnalogSampleInterval(25),printInterval(700)
 {
 	this->ecTemperature = temp;
@@ -74,15 +78,15 @@ void GravityEc::calculateAnalogAverage()
 	if (millis() - AnalogSampleTime >= AnalogSampleInterval)
 	{
 		AnalogSampleTime = millis();
-		AnalogValueTotal = AnalogValueTotal - readings[index];
-		readings[index] = analogRead(ECsensorPin);
-		AnalogValueTotal = AnalogValueTotal + readings[index];
-		index = index + 1;
-		if (index >= numReadings)
+		readings[index++] = analogRead(ECsensorPin);
+		if (index == numReadings)
+		{
 			index = 0;
-		AnalogAverage = AnalogValueTotal / numReadings;
-		/*Serial.print("AnalogAverage = ");
-		Serial.println(AnalogAverage);*/
+			for (int i = 0; i < numReadings; i++)
+				this->sum += readings[i];
+			AnalogAverage = this->sum / numReadings;
+			this->sum = 0;
+		}
 	}
 }
 
