@@ -11,7 +11,7 @@
 *
 * Product Links：http://www.dfrobot.com.cn/goods-812.html
 *
-* Sensor driver pin：A2 (sensorPin(A2))
+* Sensor driver pin：A2 (phSensorPin(A2))
 *
 * author  :  Jason
 * version :  V1.0
@@ -21,7 +21,7 @@
 #include "GravityPh.h"
 
 
-GravityPh::GravityPh():sensorPin(A2), offset(0.0f), 
+GravityPh::GravityPh():phSensorPin(A2), offset(0.0f), 
 samplingInterval(30),pHValue(0),voltage(0), sum(0)
 {
 }
@@ -32,7 +32,7 @@ samplingInterval(30),pHValue(0),voltage(0), sum(0)
 //********************************************************************************************
 void GravityPh::setup()
 {
-	pinMode(sensorPin, INPUT);
+	pinMode(phSensorPin, INPUT);
 }
 
 
@@ -48,7 +48,7 @@ void GravityPh::update()
 	if (millis() - samplingTime > samplingInterval)
 	{
 		samplingTime = millis();
-		pHArray[pHArrayIndex++] = analogRead(this->sensorPin);
+		pHArray[pHArrayIndex++] = analogRead(this->phSensorPin);
 
 		if (pHArrayIndex == arrayLength)  // 5*20 = 100ms计算一次
 		{

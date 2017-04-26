@@ -28,7 +28,7 @@ class GravityEc:public IWaterSensor
 {
 public:
 	//电导率传感器引脚
-	int ECsensorPin;   
+	int ecSensorPin;   
 
 	//电导率数值
 	double ECcurrent;

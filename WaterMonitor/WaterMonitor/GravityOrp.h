@@ -25,7 +25,7 @@ class GravityOrp:public IWaterSensor
 {
 public:
 	//orp传感器引脚
-	int orpPin;
+	int orpSensorPin;
 
 	//电压值
 	double voltage;

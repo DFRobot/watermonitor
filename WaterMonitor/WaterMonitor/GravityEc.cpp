@@ -11,7 +11,7 @@
 *
 * Product Links：http://www.dfrobot.com.cn/goods-882.html
 *
-* Sensor driver pin：A1 (ECsensorPin(A1))
+* Sensor driver pin：A1 (ecSensorPin(A1))
 *
 * author  :  Jason
 * version :  V1.0
@@ -23,7 +23,7 @@
 
 
 
-GravityEc::GravityEc(IWaterSensor* temp) :ECsensorPin(A1), ECcurrent(0), index(0), AnalogAverage(0),
+GravityEc::GravityEc(IWaterSensor* temp) :ecSensorPin(A1), ECcurrent(0), index(0), AnalogAverage(0),
 AnalogValueTotal(0), averageVoltage(0), AnalogSampleTime(0), printTime(0),sum(0),
 tempSampleTime(0), AnalogSampleInterval(25),printInterval(700)
 {
@@ -42,7 +42,7 @@ GravityEc::~GravityEc()
 //********************************************************************************************
 void GravityEc::setup()
 {
-	pinMode(ECsensorPin, INPUT);
+	pinMode(ecSensorPin, INPUT);
 	for (byte thisReading = 0; thisReading < numReadings; thisReading++)
 		readings[thisReading] = 0;
 }
@@ -78,7 +78,7 @@ void GravityEc::calculateAnalogAverage()
 	if (millis() - AnalogSampleTime >= AnalogSampleInterval)
 	{
 		AnalogSampleTime = millis();
-		readings[index++] = analogRead(ECsensorPin);
+		readings[index++] = analogRead(ecSensorPin);
 		if (index == numReadings)
 		{
 			index = 0;

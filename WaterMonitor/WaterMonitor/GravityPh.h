@@ -25,7 +25,7 @@ class GravityPh:public IWaterSensor
 {
 public:
 	//ph传感器引脚
-	int sensorPin;          
+	int phSensorPin;          
 
 	//偏移补偿
 	float offset;   

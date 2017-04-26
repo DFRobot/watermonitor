@@ -11,7 +11,7 @@
 *
 * Product Links：http://www.dfrobot.com.cn/goods-840.html
 *
-* Sensor driver pin：A3 (orpPin(A3))
+* Sensor driver pin：A3 (orpSensorPin(A3))
 *
 * author  :  Jason
 * version :  V1.0
@@ -21,7 +21,7 @@
 #include "GravityOrp.h"
 
 
-GravityOrp::GravityOrp():orpPin(A3), voltage(5.0), offset(0), orpValue(0.0), sum(0)
+GravityOrp::GravityOrp():orpSensorPin(A3), voltage(5.0), offset(0), orpValue(0.0), sum(0)
 {
 }
 
@@ -52,7 +52,7 @@ void GravityOrp::update()
 	if (millis() >= orpTimer)
 	{
 		orpTimer = millis() + 20;
-		orpArray[orpArrayIndex++] = analogRead(orpPin);    //read an analog value every 20ms
+		orpArray[orpArrayIndex++] = analogRead(orpSensorPin);    //read an analog value every 20ms
 
 		if (orpArrayIndex == arrayLength)   //5*20 = 100ms计算一次
 		{
