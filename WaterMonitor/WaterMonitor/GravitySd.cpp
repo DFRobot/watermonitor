@@ -70,11 +70,11 @@ void GravitySd::setup()
 {
 
 #ifdef DEBUG_M0
-	SerialUSB.print("Initializing SD card...");
+	SerialUSB.print(F("Initializing SD card..."));
 #endif // DEBUG_M0
 
 #ifdef DEBUG_MEAG2560
-	Serial.print("Initializing SD card...");
+	Serial.print(F("Initializing SD card..."));
 #endif // DEBUG_MEAG2560
 	
 	pinMode(SS, OUTPUT);
@@ -82,22 +82,22 @@ void GravitySd::setup()
 	if (!SD.begin(chipSelect)) {
 
 #ifdef DEBUG_M0
-		SerialUSB.println("Card failed, or not present");
+		SerialUSB.println(F("Card failed, or not present"));
 #endif // DEBUG_M0
 
 #ifdef DEBUG_MEAG2560
-		Serial.println("Card failed, or not present");
+		Serial.println(F("Card failed, or not present"));
 #endif // DEBUG_MEAG2560
 		// don't do anything more:
 		return;
 	}
 
 #ifdef DEBUG_M0
-	SerialUSB.println("card initialized.");
+	SerialUSB.println(F("card initialized."));
 #endif // DEBUG_M0
 
 #ifdef DEBUG_MEAG2560
-	Serial.println("card initialized.");
+	Serial.println(F("card initialized."));
 #endif // DEBUG_MEAG2560
 
 	//写入文件头
@@ -116,7 +116,7 @@ void GravitySd::setup()
 //********************************************************************************************
 void GravitySd::update()
 {
-	if (millis() - sdDataUpdateTime > 600000)
+	if (millis() - sdDataUpdateTime > 2000) //2000ms
 	{
 		
 		dataString = "";

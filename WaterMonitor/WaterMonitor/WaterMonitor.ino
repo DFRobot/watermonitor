@@ -43,8 +43,6 @@
 #include "GravityRtc.h"
 #include "OneWire.h"
 
-
-
 //温度传感器引脚定义和初始化
 OneWire temperature(5);  
 
@@ -80,22 +78,25 @@ void loop() {
 	monitor.update();
 
 	//*************************串口调试******************
-	//Serial.print("ph= ");
-	//Serial.print(monitor.getValueBySensorNumber(0));
-	//Serial.print("  Temp= ");
-	//Serial.print(monitor.getValueBySensorNumber(1));
-	//Serial.print("  Orp= ");
-	//Serial.println(monitor.getValueBySensorNumber(4));
-	//Serial.print("  EC= ");
-	//Serial.println(monitor.getValueBySensorNumber(3));
-}
+	Serial.print(F("Ph= "));
+	Serial.print(monitor.getValueBySensorNumber(0));
+	Serial.print(F("  Temp= "));
+	Serial.print(monitor.getValueBySensorNumber(1));
+	Serial.print(F("  D0= "));
+	Serial.print(monitor.getValueBySensorNumber(2));
+	Serial.print(F("  Ec= "));
+	Serial.print(monitor.getValueBySensorNumber(3));
+	Serial.print(F("  Orp= "));
+	Serial.println(monitor.getValueBySensorNumber(4));
 
+
+}
 
 
 /******************************相关调试信息的打印***************************/
 //注意:Arduino M0打印调试信息的时候需要将Serial替换成SerialUSB
 
-//*************************串口调试******************
+//*************************UNO,Mega2560调试******************
 //Serial.print("ph= ");
 //Serial.print(monitor.getValueBySensorNumber(0));
 //Serial.print("  Temp= ");
@@ -105,6 +106,18 @@ void loop() {
 //Serial.print("  EC= ");
 //Serial.println(monitor.getValueBySensorNumber(3));
 
+
+//*************************M0串口调试******************
+/*SerialUSB.print(F("Ph= "));
+SerialUSB.print(monitor.getValueBySensorNumber(0));
+SerialUSB.print(F("  Temp= "));
+SerialUSB.print(monitor.getValueBySensorNumber(1));
+SerialUSB.print(F("  D0= "));
+SerialUSB.print(monitor.getValueBySensorNumber(2));
+SerialUSB.print(F("  Ec= "));
+SerialUSB.print(monitor.getValueBySensorNumber(3));
+SerialUSB.print(F("  Orp= "));
+SerialUSB.println(monitor.getValueBySensorNumber(4));*/
 
 //*************************时间********************************
 //Serial.print("   Year = ");//year

@@ -35,8 +35,9 @@ public:
 	double getValue();
 
 private:
-	bool sensor_string_complete;               //have we received all the data from the Atlas Scientific product
 
+	String sensorstring = "";
+	
 	//do的数据
 	double doValue;
 
