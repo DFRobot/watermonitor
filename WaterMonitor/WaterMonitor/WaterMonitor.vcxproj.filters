@@ -45,7 +45,7 @@
     <ClInclude Include="GravitySd.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GravityDo.h">
+    <ClInclude Include="SensorDo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -71,7 +71,7 @@
     <ClCompile Include="GravitySd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GravityDo.cpp">
+    <ClCompile Include="SensorDo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

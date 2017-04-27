@@ -1,5 +1,5 @@
 ﻿/*********************************************************************************************
-* GravityDo.cpp
+* SensorDo.cpp
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
 * This Library is free software: you can redistribute it and/or modify
@@ -14,15 +14,15 @@
 * date    :  2017-04-19
 *********************************************************************************************/
 
-#include "GravityDo.h"
+#include "SensorDo.h"
 
-GravityDo::GravityDo() 
+SensorDo::SensorDo() 
 {
 
 }
 
 
-GravityDo::~GravityDo()
+SensorDo::~SensorDo()
 {
 }
 
@@ -31,7 +31,7 @@ GravityDo::~GravityDo()
 // 函数名称: setup()
 // 函数说明：初始化传感器
 //********************************************************************************************
-void GravityDo::setup()
+void SensorDo::setup()
 {
 	Serial.begin(9600);
 	sensorstring.reserve(30); 
@@ -42,7 +42,7 @@ void GravityDo::setup()
 // 函数名称: update()
 // 函数说明：更新传感器数值
 //********************************************************************************************
-void GravityDo::update()
+void SensorDo::update()
 {
 	static boolean sensor_string_complete = false;
 	if (Serial.available() > 0)
@@ -65,7 +65,7 @@ void GravityDo::update()
 // 函数名称: getValue()
 // 函数说明：返回传感器数据
 //********************************************************************************************
-double GravityDo::getValue()
+double SensorDo::getValue()
 {
 	return doValue;
 }

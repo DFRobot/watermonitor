@@ -1,5 +1,5 @@
 ﻿/*********************************************************************************************
-* GravityDo.h
+* SensorDo.h
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
 * This Library is free software: you can redistribute it and/or modify
@@ -18,11 +18,11 @@
 #include "WaterSensor.h"
 #include "Arduino.h"
 
-class GravityDo: public IWaterSensor
+class SensorDo: public IWaterSensor
 {
 public:
-	GravityDo();
-	~GravityDo();
+	SensorDo();
+	~SensorDo();
 
 public:
 	//初始化
