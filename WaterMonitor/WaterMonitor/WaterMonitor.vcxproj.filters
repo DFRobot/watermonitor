@@ -21,9 +21,6 @@
     <ClInclude Include="__vm\.WaterMonitor.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WaterSensor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="GravityOrp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -42,10 +39,16 @@
     <ClInclude Include="GravityRtc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GravitySd.h">
+    <ClInclude Include="SensorDo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SensorDo.h">
+    <ClInclude Include="ISensor.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SdService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Msg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,10 +71,10 @@
     <ClCompile Include="GravityRtc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GravitySd.cpp">
+    <ClCompile Include="SensorDo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SensorDo.cpp">
+    <ClCompile Include="SdService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

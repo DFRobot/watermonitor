@@ -33,7 +33,6 @@ SensorDo::~SensorDo()
 //********************************************************************************************
 void SensorDo::setup()
 {
-	Serial.begin(9600);
 	sensorstring.reserve(30); 
 }
 
@@ -44,20 +43,20 @@ void SensorDo::setup()
 //********************************************************************************************
 void SensorDo::update()
 {
-	static boolean sensor_string_complete = false;
+	static boolean sensorStringComplete = false;
 	if (Serial.available() > 0)
 	{
 		char inchar = (char)Serial.read();
 		this->sensorstring += inchar;
 		if (inchar == '\r')
-			sensor_string_complete = true;
+			sensorStringComplete = true;
 	}
-	if (sensor_string_complete == true)
+	if (sensorStringComplete == true)
 	{
 		if (isdigit(this->sensorstring[0]))
 			doValue = this->sensorstring.toFloat();
 		this->sensorstring = "";
-		sensor_string_complete = false;
+		sensorStringComplete = false;
 	}
 }
 

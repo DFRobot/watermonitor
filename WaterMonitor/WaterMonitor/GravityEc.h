@@ -20,11 +20,11 @@
 
 #pragma once
 #include "GravityTemperature.h"
-#include "WaterSensor.h"
+#include "ISensor.h"
 
 //extern GravityTemperature ecTemperature;
 
-class GravityEc:public IWaterSensor
+class GravityEc:public ISensor
 {
 public:
 	//电导率传感器引脚
@@ -35,7 +35,7 @@ public:
 
 
 public:
-	GravityEc(IWaterSensor*);
+	GravityEc(ISensor*);
 	~GravityEc();
 
 	//初始化
@@ -49,7 +49,7 @@ public:
 
 private:
 	//指向温度传感器的指针
-	IWaterSensor* ecTemperature = NULL;
+	ISensor* ecTemperature = NULL;
 
 	
 	static const int numReadings = 5;

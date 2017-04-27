@@ -20,8 +20,8 @@
 
 #pragma once
 #include <Arduino.h>
-#include "WaterSensor.h"
-class GravityPh:public IWaterSensor
+#include "ISensor.h"
+class GravityPh:public ISensor
 {
 public:
 	//ph传感器引脚

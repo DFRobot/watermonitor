@@ -15,10 +15,10 @@
 * date    :  2017-04-19
 *********************************************************************************************/
 #pragma once
-#include "WaterSensor.h"
+#include "ISensor.h"
 #include "Arduino.h"
 
-class SensorDo: public IWaterSensor
+class SensorDo: public ISensor
 {
 public:
 	SensorDo();

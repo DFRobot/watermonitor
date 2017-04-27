@@ -1,5 +1,5 @@
 ﻿/*********************************************************************
-* GravitySd.cpp
+* SdService.cpp
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
 * This Library is free software: you can redistribute it and/or modify
@@ -26,13 +26,8 @@
 
 
 
-//#define DEBUG_MEAG2560
-//#define DEBUG_M0
-
-//#if defined(__SAMD21G18A__)
-
-
 //SD卡片选引脚
+//#if defined(__SAMD21G18A__)
 #if  defined(__AVR_ATmega2560__)
 
 const int CsPin = 53;
@@ -43,22 +38,22 @@ const int CsPin = 4;
 
 #endif
 
-#include "GravitySd.h"
+#include "SdService.h"
 #include "string.h"
 #include <SPI.h>
-
+#include "Debug.h"
 #include "GravityRtc.h"
 
 extern GravityRtc rtc;
 String dataString = "";
 
-GravitySd::GravitySd(IWaterSensor* gravitySensor[]) :chipSelect(CsPin),sdDataUpdateTime(0)
+SdService::SdService(ISensor* gravitySensor[]) :chipSelect(CsPin),sdDataUpdateTime(0)
 {
 	this->gravitySensor = gravitySensor;
 }
 
 
-GravitySd::~GravitySd()
+SdService::~SdService()
 {
 }
 
@@ -66,39 +61,20 @@ GravitySd::~GravitySd()
 // 函数名称: setup()
 // 函数说明：初始化SD卡
 //********************************************************************************************
-void GravitySd::setup()
+void SdService::setup()
 {
-
-#ifdef DEBUG_M0
-	SerialUSB.print(F("Initializing SD card..."));
-#endif // DEBUG_M0
-
-#ifdef DEBUG_MEAG2560
-	Serial.print(F("Initializing SD card..."));
-#endif // DEBUG_MEAG2560
+	Debug::println("Initializing SD card...", false);
 	
 	pinMode(SS, OUTPUT);
 
-	if (!SD.begin(chipSelect)) {
-
-#ifdef DEBUG_M0
-		SerialUSB.println(F("Card failed, or not present"));
-#endif // DEBUG_M0
-
-#ifdef DEBUG_MEAG2560
-		Serial.println(F("Card failed, or not present"));
-#endif // DEBUG_MEAG2560
+	if (!SD.begin(chipSelect)) 
+	{
+		Debug::println("Card failed, or not present", false);
 		// don't do anything more:
 		return;
 	}
 
-#ifdef DEBUG_M0
-	SerialUSB.println(F("card initialized."));
-#endif // DEBUG_M0
-
-#ifdef DEBUG_MEAG2560
-	Serial.println(F("card initialized."));
-#endif // DEBUG_MEAG2560
+	Debug::println("card initialized.", false);
 
 	//写入文件头
 	dataFile = SD.open("sensor.csv", FILE_WRITE);
@@ -114,7 +90,7 @@ void GravitySd::setup()
 // 函数名称: update()
 // 函数说明: 更新SD卡中的数据
 //********************************************************************************************
-void GravitySd::update()
+void SdService::update()
 {
 	if (millis() - sdDataUpdateTime > 2000) //2000ms
 	{
@@ -171,17 +147,11 @@ void GravitySd::update()
 
 		//写入SD卡
 		dataFile = SD.open("sensor.csv", FILE_WRITE);
-		if (dataFile) {
+		if (dataFile) 
+		{
 			dataFile.println(dataString);
 			dataFile.close();
-
-#ifdef DEBUG_M0
-	SerialUSB.println(dataString);
-#endif // DEBUG_M0
-
-#ifdef DEBUG_MEAG2560
-	Serial.println(dataString);
-#endif // DEBUG_MEAG2560
+			Debug::println(dataString,false);
 
 		}
 		sdDataUpdateTime = millis();
@@ -189,20 +159,10 @@ void GravitySd::update()
 }
 
 //********************************************************************************************
-// 函数名称: getValue()
-// 函数说明: 接口继承，在这里没有实际用途
-//********************************************************************************************
-double GravitySd::getValue()
-{
-	return 0.0;
-}
-
-
-//********************************************************************************************
 // 函数名称: connectString()
 // 函数说明: 连接字符串数据
 //********************************************************************************************
-void GravitySd::connectString(double value)
+void SdService::connectString(double value)
 {
 	dataString += String(value, 10);
 	dataString += ",";

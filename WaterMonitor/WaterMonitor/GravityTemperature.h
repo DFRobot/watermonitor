@@ -15,12 +15,12 @@
 **********************************************************************/
 
 #pragma once
-#include "WaterSensor.h"
+#include "ISensor.h"
 #include "OneWire.h"
 #define StartConvert 0
 #define ReadTemperature 1
 
-class GravityTemperature : public IWaterSensor 
+class GravityTemperature : public ISensor 
 {
 public:
 	//温度传感器引脚
@@ -28,7 +28,7 @@ public:
 	double temperature;
 
 public:
-	GravityTemperature(OneWire *temp);
+	GravityTemperature(int pin);
 	~GravityTemperature();
 
 	//初始化
@@ -42,7 +42,7 @@ public:
 
 private:
 
-	OneWire *temp;
+	OneWire *oneWire;
 	unsigned long tempSampleInterval = 850;
 	unsigned long tempSampleTime;
 

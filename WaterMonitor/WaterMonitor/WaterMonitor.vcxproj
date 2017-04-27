@@ -63,10 +63,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\..\Documents\Arduino\libraries\OneWire;D:\arduino-1.8.2\hardware\arduino\avr\libraries\Wire\src;$(ProjectDir)..\..\..\..\..\Documents\Arduino\libraries\SD\src;D:\arduino-1.8.2\hardware\arduino\avr\libraries\SPI\src;$(ProjectDir)..\..\..\..\..\Documents\Arduino\libraries\SD\src\utility;D:\arduino-1.8.2\hardware\arduino\avr\libraries\Wire\src\utility;D:\arduino-1.8.2\libraries;D:\arduino-1.8.2\hardware\arduino\avr\libraries;$(ProjectDir)..\..\..\..\..\Documents\Arduino\libraries;D:\arduino-1.8.2\hardware\arduino\avr\cores\arduino;D:\arduino-1.8.2\hardware\arduino\avr\variants\standard;$(ProjectDir)..\WaterMonitor;D:\arduino-1.8.2\hardware\tools\avr\avr\include\;D:\arduino-1.8.2\hardware\tools\avr\avr\include\avr\;D:\arduino-1.8.2\hardware\tools\avr\lib\gcc\avr\4.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>\\Mac\Home\Documents\Arduino\libraries\OneWire;C:\Program Files (x86)\Arduino\libraries\SD\src;\\Mac\Home\Documents\Arduino\libraries\Wire\src;C:\Program Files (x86)\Arduino\libraries\SD\src\utility;C:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries\SPI;\\Mac\Home\Documents\Arduino\libraries\Wire\src\utility;C:\Program Files (x86)\Arduino\libraries;C:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries;\\Mac\Home\Documents\Arduino\libraries;C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard;$(ProjectDir)..\WaterMonitor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ProjectDir)__vm\.WaterMonitor.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <PreprocessorDefinitions>__AVR_ATmega328p__;__AVR_ATmega328P__;F_CPU=16000000L;ARDUINO=10802;ARDUINO_AVR_UNO;ARDUINO_ARCH_AVR;__cplusplus=201103L;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__AVR_ATmega328p__;__AVR_ATmega328P__;F_CPU=16000000L;ARDUINO=10708;ARDUINO_AVR_UNO;ARDUINO_ARCH_AVR;__cplusplus=201103L;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -91,10 +91,11 @@
     <ClInclude Include="GravityOrp.h" />
     <ClInclude Include="GravityPh.h" />
     <ClInclude Include="GravityRtc.h" />
-    <ClInclude Include="GravitySd.h" />
+    <ClInclude Include="SdService.h" />
     <ClInclude Include="GravitySensorHub.h" />
     <ClInclude Include="GravityTemperature.h" />
-    <ClInclude Include="WaterSensor.h" />
+    <ClInclude Include="ISensor.h" />
+    <ClInclude Include="Msg.h" />
     <ClInclude Include="__vm\.WaterMonitor.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
@@ -103,7 +104,7 @@
     <ClCompile Include="GravityOrp.cpp" />
     <ClCompile Include="GravityPh.cpp" />
     <ClCompile Include="GravityRtc.cpp" />
-    <ClCompile Include="GravitySd.cpp" />
+    <ClCompile Include="SdService.cpp" />
     <ClCompile Include="GravitySensorHub.cpp" />
     <ClCompile Include="GravityTemperature.cpp" />
   </ItemGroup>

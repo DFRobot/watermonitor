@@ -1,5 +1,5 @@
 ﻿/*********************************************************************
-* WaterSensor.h
+* ISensor.h
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
 * This Library is free software: you can redistribute it and/or modify
@@ -14,7 +14,7 @@
 * date    :  2017-04-06
 **********************************************************************/
 #pragma once
-class IWaterSensor
+class ISensor
 {
 public:
 	virtual void setup()		= 0;

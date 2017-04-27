@@ -21,11 +21,7 @@
 #include "GravityEc.h"
 #include "GravityTemperature.h"
 #include "SensorDo.h"
-#include "GravitySd.h"
-
-
-//温度传感器，定义在文件WaterMonitor.ino中
-extern OneWire temperature;  
+#include "SdService.h"
 
 //********************************************************************************************
 // 函数名称: sensors[]
@@ -45,12 +41,10 @@ GravitySensorHub::GravitySensorHub()
 	}
 
 	this->sensors[0] = new GravityPh();
-	this->sensors[1] = new GravityTemperature(&temperature);
+	this->sensors[1] = new GravityTemperature(5);
 	this->sensors[2] = new SensorDo();
 	this->sensors[3] = new GravityEc(this->sensors[1]);
 	this->sensors[4] = new GravityOrp();
-	this->sensors[5] = new GravitySd(this->sensors);
-	
 
 }
 

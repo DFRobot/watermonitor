@@ -1,5 +1,5 @@
 ﻿/*********************************************************************
-* GravitySd.h
+* SdService.h
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
 * This Library is free software: you can redistribute it and/or modify
@@ -26,18 +26,18 @@
 
 #pragma once
 
-#include "WaterSensor.h"
+#include "ISensor.h"
 #include <SD.h>
 #include "string.h"
 
-class GravitySd:public IWaterSensor
+class SdService
 {
 
 public:
 	int chipSelect;
 public:
-	GravitySd(IWaterSensor* gravitySensor[]);
-	~GravitySd();
+	SdService(ISensor* gravitySensor[]);
+	~SdService();
 
 	//初始化
 	void setup();
@@ -45,13 +45,9 @@ public:
 	//更新写入SD卡数据
 	void update();
 
-	//接口继承，在这里没有实际用途
-	double getValue();
-
-
 private:
 	//指向存放传感器数组的指针
-	IWaterSensor** gravitySensor;
+	ISensor** gravitySensor;
 	//String dataString ;
 
 	//文件句柄

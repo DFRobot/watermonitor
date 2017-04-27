@@ -37,32 +37,34 @@
 * date    :  2017-04-06
 **********************************************************************/
 
+#include <SPI.h>
+#include <SD.h>
+#include <Wire.h>
 #include <Arduino.h>
 #include "GravitySensorHub.h"
 #include <stdlib.h>
 #include "GravityRtc.h"
 #include "OneWire.h"
-
-//温度传感器引脚定义和初始化
-OneWire temperature(5);  
+#include "SdService.h" 
+#include "Debug.h"
 
 //时钟模块
 GravityRtc rtc;
 
 //传感器监视器
-GravitySensorHub monitor;
-
-
+GravitySensorHub sensorHub;
+SdService sdService = SdService(sensorHub.sensors);
 void setup() {
 	Serial.begin(9600);
 	rtc.setup();
-	monitor.setup();
+	sensorHub.setup();
+	sdService.setup();
 
 }
 
 
 //********************************************************************************************
-// 函数名称: monitor.getValueBySensorNumber(0)
+// 函数名称: sensorHub.getValueBySensorNumber(0)
 // 函数说明：获取传感器的数值，不同的参数代表获取不同的传感器数据     
 // 参    数: 0  ph值  
 // 参    数: 1  温度值    
@@ -75,19 +77,20 @@ void setup() {
 
 void loop() {
 	rtc.update();
-	monitor.update();
+	sensorHub.update();
+	sdService.update();
 
 	//*************************串口调试******************
-	Serial.print(F("Ph= "));
-	Serial.print(monitor.getValueBySensorNumber(0));
-	Serial.print(F("  Temp= "));
-	Serial.print(monitor.getValueBySensorNumber(1));
-	Serial.print(F("  D0= "));
-	Serial.print(monitor.getValueBySensorNumber(2));
-	Serial.print(F("  Ec= "));
-	Serial.print(monitor.getValueBySensorNumber(3));
-	Serial.print(F("  Orp= "));
-	Serial.println(monitor.getValueBySensorNumber(4));
+	Debug::print("Ph= ",false);
+	//Debug1(sensorHub.getValueBySensorNumber(0), false);
+	Debug::print("  Temp= ", false);
+	//Debug1(sensorHub.getValueBySensorNumber(1), false);
+	Debug::print("  D0= ", false);
+	//Debug1(sensorHub.getValueBySensorNumber(2), false);
+	Debug::print("  Ec= ", false);
+	//Debug1(sensorHub.getValueBySensorNumber(3), false);
+	Debug::print("  Orp= ", false);
+	//Debug1(sensorHub.getValueBySensorNumber(4), true);
 }
 
 
@@ -96,13 +99,13 @@ void loop() {
 
 //*************************串口调试******************
 //Serial.print("ph= ");
-//Serial.print(monitor.getValueBySensorNumber(0));
+//Serial.print(sensorHub.getValueBySensorNumber(0));
 //Serial.print("  Temp= ");
-//Serial.print(monitor.getValueBySensorNumber(1));
+//Serial.print(sensorHub.getValueBySensorNumber(1));
 //Serial.print("  Orp= ");
-//Serial.println(monitor.getValueBySensorNumber(4));
+//Serial.println(sensorHub.getValueBySensorNumber(4));
 //Serial.print("  EC= ");
-//Serial.println(monitor.getValueBySensorNumber(3));
+//Serial.println(sensorHub.getValueBySensorNumber(3));
 
 
 //*************************时间********************************

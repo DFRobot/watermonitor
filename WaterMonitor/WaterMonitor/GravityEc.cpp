@@ -23,7 +23,7 @@
 
 
 
-GravityEc::GravityEc(IWaterSensor* temp) :ecSensorPin(A1), ECcurrent(0), index(0), AnalogAverage(0),
+GravityEc::GravityEc(ISensor* temp) :ecSensorPin(A1), ECcurrent(0), index(0), AnalogAverage(0),
 AnalogValueTotal(0), averageVoltage(0), AnalogSampleTime(0), printTime(0),sum(0),
 tempSampleTime(0), AnalogSampleInterval(25),printInterval(700)
 {

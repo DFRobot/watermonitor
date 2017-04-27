@@ -15,7 +15,7 @@
 **********************************************************************/
 
 #pragma once
-#include "WaterSensor.h"
+#include "ISensor.h"
 /*
 sensors :
 0,ph
@@ -27,6 +27,7 @@ class GravitySensorHub
 private:
 	static const int SensorCount = 10;
 
+public:
 	//********************************************************************************************
 	// 函数名称: sensors[]
 	// 函数说明：存放传感器的数组   
@@ -36,7 +37,7 @@ private:
 	// 参    数: 3  电导率传感器 
 	// 参    数: 4  氧化还原电位传感器 
 	//********************************************************************************************
-	IWaterSensor *sensors[SensorCount] = {0};
+	ISensor *sensors[SensorCount] = {0};
 public:
 	GravitySensorHub();
 	~GravitySensorHub();

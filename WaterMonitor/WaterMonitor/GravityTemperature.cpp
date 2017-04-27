@@ -15,12 +15,13 @@
 **********************************************************************/
 
 #include "GravityTemperature.h"
+#include <OneWire.h>
+#include "Debug.h"
 
-GravityTemperature::GravityTemperature(OneWire *temp) 
+GravityTemperature::GravityTemperature(int pin)
 {
-	this->temp = temp;
+	this->oneWire = new OneWire(pin);
 }
-
 
 GravityTemperature::~GravityTemperature()
 {
@@ -46,8 +47,6 @@ void GravityTemperature::update()
 	{
 		tempSampleTime = millis();
 		temperature = TempProcess(ReadTemperature);  // read the current temperature from the  DS18B20
-		/*Serial.print("Temp = ");
-		Serial.println(temperature);*/
 		TempProcess(StartConvert);                   //after the reading,start the convert for next reading
 	}
 }
@@ -73,31 +72,31 @@ double GravityTemperature::TempProcess(bool ch)
 	static byte addr[8];
 	static float TemperatureSum;
 	if (!ch) {
-		if (!temp->search(addr)) {
-			Serial.println("no more sensors on chain, reset search!");
-			temp->reset_search();
+		if (!oneWire->search(addr)) {
+			Debug::print("no more sensors on chain, reset search!", false);
+			oneWire->reset_search();
 			return 0;
 		}
 		if (OneWire::crc8(addr, 7) != addr[7]) {
-			Serial.println("CRC is not valid!");
+			Debug::println("CRC is not valid!", false);
 			return 0;
 		}
 		if (addr[0] != 0x10 && addr[0] != 0x28) {
-			Serial.print("Device is not recognized!");
+			Debug::println("Device is not recognized!", false);
 			return 0;
 		}
-		temp->reset();
-		temp->select(addr);
-		temp->write(0x44, 1); // start conversion, with parasite power on at the end
+		oneWire->reset();
+		oneWire->select(addr);
+		oneWire->write(0x44, 1); // start conversion, with parasite power on at the end
 	}
 	else {
-		byte present = temp->reset();
-		temp->select(addr);
-		temp->write(0xBE); // Read Scratchpad            
+		byte present = oneWire->reset();
+		oneWire->select(addr);
+		oneWire->write(0xBE); // Read Scratchpad            
 		for (int i = 0; i < 9; i++) { // we need 9 bytes
-			data[i] = temp->read();
+			data[i] = oneWire->read();
 		}
-		temp->reset_search();
+		oneWire->reset_search();
 		byte MSB = data[1];
 		byte LSB = data[0];
 		float tempRead = ((MSB << 8) | LSB); //using two's compliment
