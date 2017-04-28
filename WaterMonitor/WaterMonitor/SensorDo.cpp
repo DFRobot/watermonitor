@@ -10,6 +10,8 @@
 *
 * Description:
 *
+* Sensor driver pin：Serial,Rx(0),Tx(1)
+* 
 * author  :  Jason(jason.ling@dfrobot.com)
 * version :  V1.0
 * date    :  2017-04-19

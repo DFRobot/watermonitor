@@ -88,10 +88,10 @@ void loop() {
 	Serial.print(sensorHub.getValueBySensorNumber(1));
 	Serial.print(F("  Do= "));
 	Serial.print(sensorHub.getValueBySensorNumber(2));
+	Serial.print(F("  Ec= "));
+	Serial.println(sensorHub.getValueBySensorNumber(3));
 	Serial.print(F("  Orp= "));
-	Serial.println(sensorHub.getValueBySensorNumber(4));
-	Serial.print(F("  EC= "));
-	Serial.println(sensorHub.getValueBySensorNumber(3));*/
+	Serial.println(sensorHub.getValueBySensorNumber(4));*/
 
 }
 

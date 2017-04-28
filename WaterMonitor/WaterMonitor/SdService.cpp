@@ -111,6 +111,17 @@ void SdService::update()
 		dataString += String(rtc.second, 10);
 		dataString += ",";
 	
+		//写入SD卡,分两次写数据，防止单次写入数据过大造成丢失
+		dataFile = SD.open("sensor.csv", FILE_WRITE);
+		if (dataFile)
+		{
+			dataFile.print(dataString);
+			dataFile.close();
+			Debug::print(dataString);
+
+		}
+
+		dataString = "";
 		//ph
 		if (this->gravitySensor[0] != NULL) {
 			connectString(this->gravitySensor[0]->getValue());
