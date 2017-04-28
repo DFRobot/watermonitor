@@ -1,7 +1,8 @@
 /*********************************************************************
 * WaterMonitor.ino
 *
-* Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
+* Copyright (C)    2017   [DFRobot](http://www.dfrobot.com)
+* GitHub Link :https://github.com/DFRobot/watermonitor
 * This Library is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
 * the Free Software Foundation, either version 3 of the License, or
@@ -32,7 +33,7 @@
 * and pin #53 (SS) must be an output
 * M0:   Onboard SPI pin,CS - pin 4 (CS pin can be changed)
 *
-* author  :  Jason
+* author  :  Jason(jason.ling@dfrobot.com)
 * version :  V1.0
 * date    :  2017-04-06
 **********************************************************************/
@@ -81,17 +82,19 @@ void loop() {
 	sdService.update();
 
 	//*************************串口调试******************
-	Debug::print("Ph= ",false);
-	//Debug1(sensorHub.getValueBySensorNumber(0), false);
-	Debug::print("  Temp= ", false);
-	//Debug1(sensorHub.getValueBySensorNumber(1), false);
-	Debug::print("  D0= ", false);
-	//Debug1(sensorHub.getValueBySensorNumber(2), false);
-	Debug::print("  Ec= ", false);
-	//Debug1(sensorHub.getValueBySensorNumber(3), false);
-	Debug::print("  Orp= ", false);
-	//Debug1(sensorHub.getValueBySensorNumber(4), true);
+	/*Serial.print(F("ph= "));
+	Serial.print(sensorHub.getValueBySensorNumber(0));
+	Serial.print(F("  Temp= "));
+	Serial.print(sensorHub.getValueBySensorNumber(1));
+	Serial.print(F("  Do= "));
+	Serial.print(sensorHub.getValueBySensorNumber(2));
+	Serial.print(F("  Orp= "));
+	Serial.println(sensorHub.getValueBySensorNumber(4));
+	Serial.print(F("  EC= "));
+	Serial.println(sensorHub.getValueBySensorNumber(3));*/
+
 }
+
 
 
 /******************************相关调试信息的打印***************************/

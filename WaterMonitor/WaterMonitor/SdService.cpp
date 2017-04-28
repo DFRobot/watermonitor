@@ -2,6 +2,7 @@
 * SdService.cpp
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
+* GitHub Link :https://github.com/DFRobot/watermonitor
 * This Library is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
 * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +20,7 @@
 * and pin #53 (SS) must be an output
 * M0:   Onboard SPI pin,CS - pin 4 (CS pin can be changed)
 *
-* author  :  Jason
+* author  :  Jason(jason.ling@dfrobot.com)
 * version :  V1.0
 * date    :  2017-04-19
 **********************************************************************/
@@ -63,18 +64,18 @@ SdService::~SdService()
 //********************************************************************************************
 void SdService::setup()
 {
-	Debug::println("Initializing SD card...", false);
+	Debug::println("Initializing SD card...");
 	
 	pinMode(SS, OUTPUT);
 
 	if (!SD.begin(chipSelect)) 
 	{
-		Debug::println("Card failed, or not present", false);
+		Debug::println("Card failed, or not present");
 		// don't do anything more:
 		return;
 	}
 
-	Debug::println("card initialized.", false);
+	Debug::println("card initialized.");
 
 	//写入文件头
 	dataFile = SD.open("sensor.csv", FILE_WRITE);
@@ -151,7 +152,7 @@ void SdService::update()
 		{
 			dataFile.println(dataString);
 			dataFile.close();
-			Debug::println(dataString,false);
+			Debug::println(dataString);
 
 		}
 		sdDataUpdateTime = millis();

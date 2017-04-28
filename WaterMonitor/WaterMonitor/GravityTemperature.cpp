@@ -2,6 +2,7 @@
 * GravityTemperature.cpp
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
+* GitHub Link :https://github.com/DFRobot/watermonitor
 * This Library is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
 * the Free Software Foundation, either version 3 of the License, or
@@ -9,7 +10,7 @@
 *
 * Description:
 *
-* author  :  Jason
+* author  :  Jason(jason.ling@dfrobot.com)
 * version :  V1.0
 * date    :  2017-04-12
 **********************************************************************/
@@ -73,16 +74,16 @@ double GravityTemperature::TempProcess(bool ch)
 	static float TemperatureSum;
 	if (!ch) {
 		if (!oneWire->search(addr)) {
-			Debug::print("no more sensors on chain, reset search!", false);
+			Debug::println("no temperature sensors on chain, reset search!");
 			oneWire->reset_search();
 			return 0;
 		}
 		if (OneWire::crc8(addr, 7) != addr[7]) {
-			Debug::println("CRC is not valid!", false);
+			Debug::println("CRC is not valid!");
 			return 0;
 		}
 		if (addr[0] != 0x10 && addr[0] != 0x28) {
-			Debug::println("Device is not recognized!", false);
+			Debug::println("Device is not recognized!");
 			return 0;
 		}
 		oneWire->reset();
